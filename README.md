@@ -8,7 +8,7 @@ Because targeting all devices using media queries is hard or because having a si
 * You can calculate width or height between two different element even if they are parents.
 * You can calculate width or height between two different values.
 * You can calculate width or height between elements and values.
-* You can cacculate using / or - operator.
+* You can calculate using / or - operator.
 
 #Properties
 
