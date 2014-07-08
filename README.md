@@ -27,3 +27,6 @@ Because targeting all devices using media queries is hard or because having a si
     operator: '' // Calculation operator [optional]['/'|'-']['/']
     
 #Examples
+
+#TODO
+Make it more dynamic using CSS calc();
