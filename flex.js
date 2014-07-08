@@ -19,9 +19,10 @@
 
                 property = rule.property || 'width',
                         value = function (parent, child) {
-                            var parentSize, childSize, operator;
+                            var parentSize, childSize, operator, unit,size;
 
-                            operator = rule.operator || '/';
+                            operator = rule.operator || '/',
+                            unit = rule.unit || '%';
 
                             function getSize(properties) {
                                 var size, selector, value, property, elm;
@@ -52,8 +53,18 @@
 
                             parentSize = getSize(parent);
                             childSize = getSize(child);
-
-                            return operator === '/' ? childSize / parentSize * 100 + '%' : parentSize - childSize + 'px';
+                            
+                            if(operator === '/' && unit === '%') {
+                                size =  childSize / parentSize * 100 + '%';
+                            } else if (operator === '/' && unit === 'px') {
+                                size =  childSize;
+                            } else if (operator === '-' && unit === '%') {
+                                 size = ((parentSize - childSize)  / parentSize) * 100 + '%';
+                            } else if (operator === '-' && unit === 'px') {
+                                 size = parentSize - childSize;
+                            }
+                            
+                            return size; 
                         }(rule.parent, rule.child);
 
 
