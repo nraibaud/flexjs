@@ -30,4 +30,4 @@ Because targeting all devices using media queries is hard or because having a si
 
 #TODO
 * Make it more dynamic using CSS calc().
-* Remove and add rules on the fly.
+* Remove and add methods to add and remove rules on the fly.
