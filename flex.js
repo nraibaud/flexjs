@@ -28,17 +28,18 @@
 
                                 properties = properties || {};
 
-                                selector = properties.selector || 'window',
+                                selector = properties.selector || null,
                                         value = properties.value || '100%',
                                         property = properties.property || 'width';
 
                                 if (selector === 'window') {
                                     size = window['inner' + (property.charAt(0).toUpperCase() + property.slice(1))];
-                                } else {
+                                } else if (selector) {
                                     elm = document.querySelector(selector);
                                     size = parseInt(window.getComputedStyle(elm, null).getPropertyValue(property));
+                                } else {
+                                    size = value * 2;
                                 }
-
 
                                 if (typeof value === 'string') {
                                     size = (size * parseInt(value)) / 100;
