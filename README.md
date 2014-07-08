@@ -13,7 +13,7 @@ Because targeting all devices using media queries is hard or because having a si
 #Properties
 
     parent: { // The parent object [optional]
-        selector: '', // Parent selector [optional]['window'|'selector']['window']
+        selector: '', // Parent selector [optional]['window'|'selector'][null]
         value: '', // Size from parent [optional][number,string]['100%']
         property: '' // Property to get [optional]['width'|'height']['width']
     },
