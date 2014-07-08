@@ -5,6 +5,7 @@ Because targeting all devices using media queries is hard or because having a si
 * Call a css file named flex.css (If not, the first found css, will be used)
 * Define your rules as JSON object.
 * Call the flex function.
+* You can set size base from % of computedStyle, comptutedStyle - number value, number value.
 * You can calculate width or height between two different element even if they are parents.
 * You can calculate width or height between two different values.
 * You can calculate width or height between elements and values.
@@ -29,30 +30,59 @@ Because targeting all devices using media queries is hard or because having a si
     unit: '' // Unit of css value [optional]['%'|'px']['%']
     
 #Examples
-## Set same height on .block in px
-    parent: {
-        selector:'#block'
-    },
-    child: {
-        value:0
-    },
-    selector:'.blocks .block',
-    property:'height',
-    operator:'-',
-    unit:'px'
-    
+## .blocks .block height is equal to #block width
+    flex([{
+        parent: {
+                selector:'#block'
+            },
+            child: {
+                value:0
+            },
+            selector:'.blocks .block',
+            property:'height',
+            operator:'-',
+            unit:'px'
+        }]);
+        
 
-## Set same height on .block in %
-    parent: {
-        selector:'.blocks',
-         property:'height'
-    },
-    child: {
-        selector:'#block'
-    },
-    selector:'.blocks .block',
-    property:'height'
-    
+## .blocks .block height is n% of .blocks height based on #block width
+    flex([{
+        parent: {
+            selector:'.blocks',
+             property:'height'
+        },
+        child: {
+            selector:'#block'
+        },
+        selector:'.blocks .block',
+        property:'height'
+     }]);
+     
+## .blocks .block width is n% of window width
+    flex([{
+        parent: {
+            selector:'window'
+        },
+        child: {
+            value:200
+        },
+        selector:'.blocks .block'
+     }]);
+     
+## body width is nPX of window width
+    flex([{
+        parent: {
+            selector:'window'
+        },
+        child: {
+            selector:'window',
+            value:'25%'
+        },
+        selector:'body',
+        unit:'px',
+        operator:'-'
+     }]);
+     
 #TODO
 * Make it more dynamic using CSS calc().
 * Remove and add methods to add and remove rules on the fly.
