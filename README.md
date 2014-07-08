@@ -44,7 +44,8 @@ Because targeting all devices using media queries is hard or because having a si
 
 ## Set same height on .block in %
     parent: {
-        selector:'.blocks'
+        selector:'.blocks',
+         property:'height'
     },
     child: {
         selector:'#block'
