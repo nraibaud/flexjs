@@ -17,8 +17,8 @@
         value: '', // Size from child [optional][number,string]['100%']
         property: '' // Property to get [optional]['width'|'height']['width']
     },
-    selector: '.TEST1', // Output selector [required]
-    property: 'width', // Output property [optional]['width'|'height']['width']
-    operator: '-' // Calculation operator [optional]['/'|'-']['/']
+    selector: '', // Output selector [required][string]
+    property: '', // Output property [optional]['width'|'height']['width']
+    operator: '' // Calculation operator [optional]['/'|'-']['/']
     
 #Examples
