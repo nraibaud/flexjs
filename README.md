@@ -7,4 +7,18 @@
 
 #Properties
 
+    parent: { // The parent object [optional]
+        selector: '', // Parent selector [optional]['window'|'selector']['window']
+        value: '', // Size from parent [optional][number,string]['100%']
+        property: '' // Property to get [optional]['width'|'height']['width']
+    },
+    parent: { // The child object [optional]
+        selector: '', // Child selector [optional]['window'|'selector']['window']
+        value: '', // Size from child [optional][number,string]['100%']
+        property: '' // Property to get [optional]['width'|'height']['width']
+    },
+    selector: '.TEST1', // Output selector [required]
+    property: 'width', // Output property [optional]['width'|'height']['width']
+    operator: '-' // Calculation operator [optional]['/'|'-']['/']
+    
 #Examples
