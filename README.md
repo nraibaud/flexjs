@@ -29,7 +29,29 @@ Because targeting all devices using media queries is hard or because having a si
     unit: '' // Unit of css value [optional]['%'|'px']['%']
     
 #Examples
+## Set same height on .block in px
+    parent: {
+        selector:'#block'
+    },
+    child: {
+        value:0
+    },
+    selector:'.blocks .block',
+    property:'height',
+    operator:'-',
+    unit:'px'
+    
 
+## Set same height on .block in %
+    parent: {
+        selector:'.blocks'
+    },
+    child: {
+        selector:'#block'
+    },
+    selector:'.blocks .block',
+    property:'height'
+    
 #TODO
 * Make it more dynamic using CSS calc().
 * Remove and add methods to add and remove rules on the fly.
