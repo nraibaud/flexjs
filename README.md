@@ -9,6 +9,7 @@ Because targeting all devices using media queries is hard or because having a si
 * You can calculate width or height between two different values.
 * You can calculate width or height between elements and values.
 * You can calculate using / or - operator.
+* You can choose unit % or px.
 
 #Properties
 
@@ -24,11 +25,11 @@ Because targeting all devices using media queries is hard or because having a si
     },
     selector: '', // Output selector [required][string]
     property: '', // Output property [optional]['width'|'height']['width']
-    operator: '' // Calculation operator [optional]['/'|'-']['/']
+    operator: '' // Calculation operator [optional]['/'|'-']['/'],
+    unit: '' // Unit of css value [optional]['%'|'px']['%']
     
 #Examples
 
 #TODO
-* Return value in % or px.
 * Make it more dynamic using CSS calc().
 * Remove and add methods to add and remove rules on the fly.
