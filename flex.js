@@ -1,4 +1,4 @@
-/**
+     /**
      * FlexJS 1.0.0
      * Dynamic responsive design based on JSON object.
      *
@@ -26,9 +26,14 @@
                             function getSize(properties) {
                                 var size, selector, value, property, elm;
 
+                                properties = properties || {};
+
                                 selector = properties.selector || 'window',
                                         value = properties.value || '100%',
                                         property = properties.property || 'width';
+
+                                value = value || 'window',
+                                        property = property || 'width';
 
                                 if (selector === 'window') {
                                     elm = window['inner' + (property.charAt(0).toUpperCase() + property.slice(1))];
@@ -52,6 +57,8 @@
 
                             return operator === '/' ? childSize / parentSize * 100 + '%' : parentSize - childSize + 'px';
                         }(rule.parent, rule.child);
+
+                console.log(value);
 
                 sheet.insertRule(rule.selector + '{ ' + property + ':' + value + ' }', index + 1);
             });
