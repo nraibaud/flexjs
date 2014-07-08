@@ -1,4 +1,4 @@
-     /**
+/**
      * FlexJS 1.0.0
      * Dynamic responsive design based on JSON object.
      *
@@ -32,16 +32,13 @@
                                         value = properties.value || '100%',
                                         property = properties.property || 'width';
 
-                                value = value || 'window',
-                                        property = property || 'width';
-
                                 if (selector === 'window') {
-                                    elm = window['inner' + (property.charAt(0).toUpperCase() + property.slice(1))];
+                                    size = window['inner' + (property.charAt(0).toUpperCase() + property.slice(1))];
                                 } else {
                                     elm = document.querySelector(selector);
+                                    size = parseInt(window.getComputedStyle(elm, null).getPropertyValue(property));
                                 }
 
-                                size = parseInt(window.getComputedStyle(elm, null).getPropertyValue(property));
 
                                 if (typeof value === 'string') {
                                     size = (size * parseInt(value)) / 100;
