@@ -1,5 +1,5 @@
 /**
-     * FlexJS 1.0.0
+     * FlexJS 1.2.0
      * Dynamic responsive design based on JSON object.
      *
      * Nicolas RAIBAUD
