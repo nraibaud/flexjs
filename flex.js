@@ -56,7 +56,6 @@
                             return operator === '/' ? childSize / parentSize * 100 + '%' : parentSize - childSize + 'px';
                         }(rule.parent, rule.child);
 
-                console.log(value);
 
                 sheet.insertRule(rule.selector + '{ ' + property + ':' + value + ' }', index + 1);
             });
