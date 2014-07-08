@@ -29,5 +29,6 @@ Because targeting all devices using media queries is hard or because having a si
 #Examples
 
 #TODO
+* Return value in % or px.
 * Make it more dynamic using CSS calc().
 * Remove and add methods to add and remove rules on the fly.
