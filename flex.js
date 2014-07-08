@@ -37,14 +37,14 @@
                                 } else if (selector) {
                                     elm = document.querySelector(selector);
                                     size = parseInt(window.getComputedStyle(elm, null).getPropertyValue(property));
-                                } else {
-                                    size = value * 2;
                                 }
-
-                                if (typeof value === 'string') {
+                                
+                                if (typeof value === 'string' && selector) {
                                     size = (size * parseInt(value)) / 100;
-                                } else {
+                                } else if (selector) {
                                     size = size - value;
+                                } else {
+                                    size = value;
                                 }
 
                                 return size;
