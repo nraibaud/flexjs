@@ -30,9 +30,6 @@
                                         value = properties.value || '100%',
                                         property = properties.property || 'width';
 
-                                value = value || 'window',
-                                        property = property || 'width';
-
                                 if (selector === 'window') {
                                     elm = window['inner' + (property.charAt(0).toUpperCase() + property.slice(1))];
                                 } else {
