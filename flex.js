@@ -1,79 +1,65 @@
 /**
- * FlexJS 1.0.0
- * Dynamic responsive design based on JSON object.
- *
- flex([
- {
-     parent: 960, // size of parent
-     child: 200, // size of child
-     selector: '.TEST1', // output selector
-     property: 'width' // output property
-     // .TEST1 {width: 20.833333333%;}
- },
- {
-     parent: 'window', // size from window
-     child: 54, // size of child
-     selector: '.TEST2', // output selector
-     property: 'width' // output property
-     // .TEST2 {width: XXX%;}
- },
- {
-     parent: 960, // size of parent
-     child: 'body > .p', size from selector
-     selector: '.TEST3', // output selector
-     property: 'height' // output property
-     // .TEST3 {width: XXX%;}
- },
- {
-     parent: 'body', size from selector
-     child: 'body > .p', size from selector
-     selector: '.TEST4', // output selector
-     property: 'width'  // output property
-     // .TEST4 {width: XXX%;}
- }
- ]);
- *
- * Nicolas RAIBAUD
- * 07/07/14
- * */
-(function (window) {
+     * FlexJS 1.0.0
+     * Dynamic responsive design based on JSON object.
+     *
+     * Nicolas RAIBAUD
+     * 07/07/14
+     * */
+    (function (window) {
 
-    'use strict';
+        'use strict';
 
-    window.flex = function (rules) {
-        var sheet;
+        window.flex = function (rules) {
+            var sheet;
 
-        sheet = document.styleSheets[0];
+            sheet = document.styleSheets[0];
 
-        rules.forEach(function (rule, index, array) {
-            var property, value;
+            rules.forEach(function (rule, index, array) {
+                var property, value;
 
-            property = rule.property || 'width',
-                value = function (parent, child) {
-                    var parentSize, childSize;
+                property = rule.property || 'width',
+                        value = function (parent, child) {
+                            var parentSize, childSize, operator;
 
-                    function getSize(value) {
-                        var size;
+                            operator = rule.operator || '/';
 
-                        if (value === 'window') {
-                            size = window['inner' + (property.charAt(0).toUpperCase() + property.slice(1))];
-                        } else if (typeof value === 'string') {
-                            size = parseInt(window.getComputedStyle(document.querySelector(value), null).getPropertyValue(property));
-                        } else {
-                            size = value;
-                        }
+                            function getSize(properties) {
+                                var size, selector, value, property, elm;
 
-                        return size;
-                    }
+                                selector = properties.selector || 'window',
+                                        value = properties.value || '100%',
+                                        property = properties.property || 'width';
 
-                    parentSize = getSize(parent);
-                    childSize = getSize(child);
+                                value = value || 'window',
+                                        property = property || 'width';
 
-                    return childSize / parentSize;
-                }(rule.parent, rule.child);
+                                if (selector === 'window') {
+                                    elm = window['inner' + (property.charAt(0).toUpperCase() + property.slice(1))];
+                                } else {
+                                    elm = document.querySelector(selector);
+                                }
 
-            sheet.insertRule(rule.selector + '{ ' + property + ':' + (value * 100) + '%; }', index + 1);
-        });
-    };
+                                size = parseInt(window.getComputedStyle(elm, null).getPropertyValue(property));
 
-})(this);
+                                if (typeof value === 'string') {
+                                    size = (size * parseInt(value)) / 100;
+                                } else {
+                                    size = size - value;
+                                }
+
+                                return size;
+                            }
+
+                            parentSize = getSize(parent);
+                            childSize = getSize(child);
+
+                            return operator === '/' ? childSize / parentSize * 100 + '%' : parentSize - childSize + 'px';
+                        }(rule.parent, rule.child);
+
+                console.log(value);
+
+                sheet.insertRule(rule.selector + '{ ' + property + ':' + value + ' }', index + 1);
+            });
+        };
+
+    })(this);
