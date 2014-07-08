@@ -7,7 +7,6 @@ Because targeting all devices using media queries is hard or because having a si
 * Define your rules as JSON object.
 * Call the flex function.
 
-
 * You can calculate width or height between two different element even if they are parents.
 * You can calculate width or height between two different values.
 * You can calculate width or height between elements and values.
