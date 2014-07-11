@@ -68,7 +68,7 @@
                         }(rule.parent, rule.child);
 
 
-                sheet.insertRule(rule.selector + '{ ' + property + ':' + value + ' }', index + 1);
+                sheet.insertRule(rule.selector + '{ ' + property + ':' + value + rule.unit + '}', index + 1);
             });
         };
 
