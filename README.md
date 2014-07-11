@@ -43,7 +43,20 @@ Because targeting all devices using media queries is hard or because having a si
             operator:'-',
             unit:'px'
         }]);
-        
+
+
+## .btn height is 5.925925926% of window height
+    flex([{
+        child: {
+            selector:'window',
+             property:'height',
+             value:'5.925925926%'
+        },
+        selector:'.btn',
+        property:'height',
+        unit:'px'
+     }]);
+             
 
 ## .blocks .block height is n% of .blocks height based on #block width
     flex([{
