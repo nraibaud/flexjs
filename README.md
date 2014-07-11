@@ -45,11 +45,10 @@ Because targeting all devices using media queries is hard or because having a si
         }]);
 
 
-## .btn height is 5.925925926% of window height
+## .btn height is 5.925925926% of window width
     flex([{
         child: {
             selector:'window',
-             property:'height',
              value:'5.925925926%'
         },
         selector:'.btn',
